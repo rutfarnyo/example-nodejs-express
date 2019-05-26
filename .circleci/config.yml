@@ -28,3 +28,4 @@ jobs:
             docker push rutfarnyo/example-nodejs-circle:lastest
             docker push rutfarnyo/example-nodejs-circle:${CIRCLE_SHA1}
       - run: echo Done
+ 
