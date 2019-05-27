@@ -18,7 +18,7 @@ jobs:
      # - run: npm test
   ship: 
   deploy:
-  - run: echo Done
+  
 workflows:
   version: 2
   build_test_ship_deploy:
