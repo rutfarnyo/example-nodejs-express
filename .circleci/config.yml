@@ -16,7 +16,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
      - run: npm test
-    ship:
+    ship: 
     deploy:
   workflows:
     version: 2
@@ -36,7 +36,3 @@ jobs:
             - build
             - test
             - ship
-     - run: echo Done
-
-      
- 
