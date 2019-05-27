@@ -9,11 +9,30 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
-            # fallback 
             - v1-dependencies-
       - run: npm install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: echo Done
+     - run: npm test
+  ship: 
+  deploy:
+workflows:
+  version: 2
+  build_test_ship_deploy:
+    jobs:
+      - build
+      - test:
+        requires:
+          - build
+      - ship:
+        requires:
+          - build
+          - test  
+      - deploy:
+        type: approval
+        requires:
+          - build
+          - test
+          - ship
